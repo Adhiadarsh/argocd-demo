@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: argocd
-  name: argocd
+    app: argocdd
+  name: argocdd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: argocd
+      app: argocdd
   template:
     metadata:
       labels:
-        app: argocd
+        app: argocdd
     spec:
       containers:
         - image: quay.io/adhis/argo-05:latest
           imagePullPolicy: Always
-          name: argocd
+          name: argocdd
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -25,6 +25,6 @@ spec:
               protocol: TCP
           env:
             - name: VOTING_API_SERVICE_HOST
-              value: argocd
+              value: argocdd
             - name: VOTING_API_SERVICE_PORT
               value: "9000"
